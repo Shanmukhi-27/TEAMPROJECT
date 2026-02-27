@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: course-selection-platform
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
