@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Selection Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Login Page -->
+  <div id="loginPage" class="page active">
+    <div class="container">
+      <div class="auth-box">
+        <h1>Course Selection Platform</h1>
+        <h2>Login</h2>
+        <form id="loginForm">
+          <input type="text" id="loginUsername" placeholder="Username" required>
+          <input type="password" id="loginPassword" placeholder="Password" required>
+          <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+        <p class="demo-info">Demo Admin: username: admin, password: admin123</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signup Page -->
+  <div id="signupPage" class="page">
+    <div class="container">
+      <div class="auth-box">
+        <h1>Course Selection Platform</h1>
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+          <input type="text" id="signupUsername" placeholder="Username" required>
+          <input type="email" id="signupEmail" placeholder="Email" required>
+          <input type="password" id="signupPassword" placeholder="Password" required>
+          <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Dashboard -->
+  <div id="studentDashboard" class="page">
+    <nav class="navbar">
+      <h1>Student Portal</h1>
+      <div class="nav-right">
+        <span id="studentName"></span>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </nav>
+    
+    <div class="container">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('availableCourses')">Available Courses</button>
+        <button class="tab-btn" onclick="showTab('myCourses')">My Courses</button>
+        <button class="tab-btn" onclick="showTab('timetable')">Timetable</button>
+      </div>
+
+      <!-- Available Courses Tab -->
+      <div id="availableCourses" class="tab-content active">
+        <h2>Available Courses</h2>
+        <div id="coursesList"></div>
+      </div>
+
+      <!-- My Courses Tab -->
+      <div id="myCourses" class="tab-content">
+        <h2>My Registered Courses</h2>
+        <div id="myRegistrations"></div>
+      </div>
+
+      <!-- Timetable Tab -->
+      <div id="timetable" class="tab-content">
+        <h2>My Weekly Timetable</h2>
+        <div id="timetableView"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard -->
+  <div id="adminDashboard" class="page">
+    <nav class="navbar">
+      <h1>Admin Portal</h1>
+      <div class="nav-right">
+        <span id="adminName"></span>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </nav>
+    
+    <div class="container">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('manageCourses')">Manage Courses</button>
+        <button class="tab-btn" onclick="showTab('manageRegistrations')">Registrations</button>
+        <button class="tab-btn" onclick="showTab('students')">Students</button>
+      </div>
+
+      <!-- Manage Courses Tab -->
+      <div id="manageCourses" class="tab-content active">
+        <h2>Manage Courses</h2>
+        <button class="btn-primary" onclick="showAddCourseForm()">Add New Course</button>
+        
+        <div id="addCourseForm" class="form-box" style="display:none;">
+          <h3>Add New Course</h3>
+          <form id="courseForm">
+            <input type="text" id="courseCode" placeholder="Course Code (e.g., CS101)" required>
+            <input type="text" id="courseName" placeholder="Course Name" required>
+            <input type="text" id="courseInstructor" placeholder="Instructor" required>
+            <input type="number" id="courseCredits" placeholder="Credits" required>
+            <input type="number" id="courseCapacity" placeholder="Capacity" required>
+            <select id="courseDay" required>
+              <option value="">Select Day</option>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+            </select>
+            <input type="time" id="courseStartTime" required>
+            <input type="time" id="courseEndTime" required>
+            <input type="text" id="courseSemester" placeholder="Semester (e.g., Fall 2024)" required>
+            <textarea id="courseDescription" placeholder="Description"></textarea>
+            <button type="submit">Add Course</button>
+            <button type="button" onclick="hideAddCourseForm()">Cancel</button>
+          </form>
+        </div>
+        
+        <div id="adminCoursesList"></div>
+      </div>
+
+      <!-- Manage Registrations Tab -->
+      <div id="manageRegistrations" class="tab-content">
+        <h2>All Registrations</h2>
+        <div id="allRegistrations"></div>
+      </div>
+
+      <!-- Students Tab -->
+      <div id="students" class="tab-content">
+        <h2>Registered Students</h2>
+        <div id="studentsList"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
